@@ -1,25 +1,23 @@
 cpp-api-streaming
 =================
 
-A demo app in C++ for streaming rates using OANDA open api and libcurl
+A demo app in C++ for streaming rates using OANDA REST api and the [POCO C++ library](http://pocoproject.org/download/index.html).
+A JSON parser such as [libjson](http://sourceforge.net/projects/libjson/) can be used decode the JSON response.
 
 ### Setup
 
 Clone this repo to the location of your choice
 
-Make sure you have libcurl installed
-
-	apt-get install libcurl4-gnutls-dev
-
 Update the following information in main() in streaming.cpp:
 
-    domain
     accountId
     access_token (Authorization)
 
-Compile the file through g++ compiler. Link libcurl using the -lcurl flag.
+Compile the file through g++ compiler. Link the poco networking component using the -lPocoNetSSL flag.
 
-    g++ streaming.cpp -lcurl -o streaming
+`g++ streaming.cpp -lPocoNetSSL -o streaming`
+
+Alternatively, use the provided Makefile by running `make`.
 
 Run the output executable file
 
