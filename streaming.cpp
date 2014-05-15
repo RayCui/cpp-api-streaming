@@ -41,7 +41,7 @@ int main ()
         const Context::Ptr context = new Context(Context::CLIENT_USE, "", "", "", Context::VERIFY_NONE, 9, false, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
 
         // prepare session
-        URI uri("https://stream-fxpractice.oanda.com/v1/quote?accountId=<your-account-id>&instruments=EUR_USD");
+        URI uri("https://stream-fxpractice.oanda.com/v1/prices?accountId=<your-account-id>&instruments=EUR_USD");
             
         HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
         session.setKeepAlive(true);
