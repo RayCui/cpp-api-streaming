@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -MMD -lPocoNetSSL
+CXXFLAGS = -Wall -MMD -lPocoNet -lPocoFoundation -lPocoNetSSL
 
 EXEC = streaming
 OBJECTS = streaming.o
@@ -13,4 +13,4 @@ ${EXEC}: ${OBJECTS}
 .PHONY : clean
 
 clean :
-	rm ${OBJECTS} ${EXEC} ${DEPENDS}
+	rm -rf ${OBJECTS} ${EXEC} ${DEPENDS}

@@ -16,6 +16,21 @@ using namespace Poco;
 using namespace Poco::Net;
 using namespace std;
 
+// Edit these global variables with your own information
+
+std::string account_id = "1234567";
+std::string access_token = "ACCESS-TOKEN";
+std::string instruments = "EUR_USD,USD_CAD,EUR_JPY";
+std::string domain = "https://stream-fxpractice.oanda.com";
+
+/*****************************
+The domain variable should be:
+
+For Sandbox    -> https://stream-sandbox.oanda.com
+For fxPractice -> https://stream-fxpractice.oanda.com
+For fxTrade    -> https://stream-fxtrade.oanda.com
+******************************/
+
 void handleStream(streambuf* stream_buffer)
 {
     std::istreambuf_iterator<char> eos; // end-of-range iterator
@@ -41,7 +56,7 @@ int main ()
         const Context::Ptr context = new Context(Context::CLIENT_USE, "", "", "", Context::VERIFY_NONE, 9, false, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH");
 
         // prepare session
-        URI uri("https://stream-fxpractice.oanda.com/v1/prices?accountId=<your-account-id>&instruments=EUR_USD");
+        URI uri(domain + std::string("/v1/prices?accountId=") + account_id + std::string("&instruments=") + instruments);
             
         HTTPSClientSession session(uri.getHost(), uri.getPort(), context);
         session.setKeepAlive(true);
@@ -52,7 +67,7 @@ int main ()
 
         // send request
         HTTPRequest req(HTTPRequest::HTTP_GET, path, HTTPMessage::HTTP_1_1);
-        req.set("Authorization", "Bearer <your-access-token>");
+        req.set("Authorization", std::string("Bearer ") + access_token);
         session.sendRequest(req);
 
         // get response

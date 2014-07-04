@@ -13,9 +13,9 @@ Update the following information in main() in streaming.cpp:
     accountId
     access_token (Authorization)
 
-Compile the file through g++ compiler. Link the poco networking component using the -lPocoNetSSL flag.
+Compile the file through g++ compiler. Link the poco networking component using the following -l flags.
 
-`g++ streaming.cpp -lPocoNetSSL -o streaming`
+`g++ streaming.cpp -lPocoNet -lPocoFoundation -lPocoNetSSL -o streaming`
 
 Alternatively, use the provided Makefile by running `make`.
 
@@ -25,10 +25,10 @@ Run the output executable file
 
 ### Sameple Output
 
-	{"instrument":"EUR_USD","time":"2014-03-07T20:52:17.453618Z","bid":1.3867,"ask":1.38682}
+	{"tick":{"instrument":"EUR_USD","time":"2014-03-07T20:52:17.453618Z","bid":1.3867,"ask":1.38682}}
 	{"heartbeat":{"time":"2014-03-07T20:52:29.452784Z"}}
-	{"instrument":"EUR_USD","time":"2014-03-07T20:52:31.430114Z","bid":1.38671,"ask":1.38685}
-	{"instrument":"EUR_USD","time":"2014-03-07T20:52:31.478110Z","bid":1.38673,"ask":1.38687}
+	{"tick":{"instrument":"EUR_USD","time":"2014-03-07T20:52:31.430114Z","bid":1.38671,"ask":1.38685}}
+	{"tick":{"instrument":"EUR_USD","time":"2014-03-07T20:52:31.478110Z","bid":1.38673,"ask":1.38687}}
 
 ### More Information
 
